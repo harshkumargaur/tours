@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self';"/> -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0-alpha.0/leaflet.css" integrity="sha512-R1nTzP7vsLwNjdybP0Y3uBI9Da0mdZ04VCmH13UyIYgzlIel6/C8uHWfC7WrwESWh2MyIWx0WMZgfkkYKtaQxg==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0-alpha.0/leaflet.js"></script>
+
+  <!-- <link href="https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css" rel="stylesheet" /> -->
+
+  <title><%=title%></title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav nav--tours">
+      <a href="/" class="nav__el">All tours</a>
+
+    </nav>
+    <div class="header__logo">
+      <img src="/img/logo-white.png" alt="Natours logo" />
+    </div>
+
+
+    <%   if(user){  %>
+    <nav class="nav nav--user">
+      <a href="/logout" class="nav__el">Log Out</a>
+      <a href="/me" class="nav__el">
+        <img src="/img/users/<%= user.photo %>" alt="User photo" class="nav__user-img" />
+
+      </a>
+
+      <%  }else{  %>
+      <a href="/login" class="nav__el">Log in</a>
+      <a href="#" class="nav__el nav__el--cta">Sign up</a>
+
+      <% } %>
+
+
+
+
+
+
+    </nav>
+  </header>
