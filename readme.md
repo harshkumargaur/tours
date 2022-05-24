@@ -1,6 +1,10 @@
 # Rest api project 
 # build using express , mongoose, ejs template engine
 
+## The file temp/postman_api_routes.json all the routes of the api in postman collection
+
+### The password for each user is test1234
+
 # File/Folder structure
 <img src="/temp/tourGit.png">
 <hr>

@@ -1,0 +1,507 @@
+{
+	"info": {
+		"_postman_id": "6051d4d9-8eb8-4956-843e-4fe5ad467ea6",
+		"name": "natours api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "review routes",
+			"item": [
+				{
+					"name": "update review",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"review\":\"An updated review\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/reviews/622a0d4d9bb85a4f3dcef4f6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"622a0d4d9bb85a4f3dcef4f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"review\":\"A test review\",\n    \"rating\":5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/tours/5c88fa8cf4afda39709c2955/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tours",
+								"5c88fa8cf4afda39709c2955",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/reviews/5c8a355b14eb5c17645c9109",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"5c8a355b14eb5c17645c9109"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calc review rating and update the rating on tour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/reviews/calcRating",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"calcRating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/reviews/622bcabfcfdf58cc903792fb",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"622bcabfcfdf58cc903792fb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tour routes",
+			"item": [
+				{
+					"name": "get all the tours",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/tours?fields=name,ratingsQuantity",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tours"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name,ratingsQuantity"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one tour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/tours/5c88fa8cf4afda39709c2955",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tours",
+								"5c88fa8cf4afda39709c2955"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aggregation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/tours/aggr",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tours",
+								"aggr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sorting all tours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/tours?fields=name,price&sort=price",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tours"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name,price"
+								},
+								{
+									"key": "sort",
+									"value": "price"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update tour body",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"A newly added test tour\",\n    \"price\":500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/tours/622b268d179f206997705910/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tours",
+								"622b268d179f206997705910",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a tour",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test tour\",\n    \"duration\":5,\n    \"maxGroupSize\":6,\n    \"difficulty\":\"easy\",\n    \"price\":345,\n    \"summary\":\"This is a test tour for testing purpose\",\n    \"description\":\"A wonderfull place to spent during vacation\",\n    \"coverImage\":\"cover image\",\n    \"guides\":[\n        \"6225ac8da644a4d825788a13\",\n        \"6225ad19a644a4d825788a15\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/tours/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tours",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users routes",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"admin@natours.in\",\n    \"password\":\"test0987\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/6225ad19a644a4d825788a15",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"6225ad19a644a4d825788a15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update password",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\":\"test0987\",\n    \"newPassword\":\"test1234\",\n    \"passwordConfirmed\":\"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/updatePassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me end point",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user body",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"kgf returns\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/updateUser",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
